@@ -1,2 +1,2 @@
 # mean-machine
-Mean Machine demo code
+Goofy little user manager I did in an effort to learn MEAN.
