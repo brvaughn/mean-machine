@@ -28,6 +28,13 @@ angular.module('app.routes', ['ngRoute'])
       templateUrl : 'app/views/pages/users/single.html',
       controller : 'userCreateController',
       controllerAs : 'user'
+    })
+
+    // for for editing a user's information
+    .when('/users/:user_id', {
+      templateUrl : 'app/views/pages/users/single.html',
+      controller : 'userEditController',
+      controllerAs : 'user'
     });
 
 

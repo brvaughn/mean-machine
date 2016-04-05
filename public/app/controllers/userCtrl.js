@@ -63,4 +63,39 @@ angular.module('userCtrl', ['userService'])
         vm.message = data.message;
       });
   };
+}])
+
+// controller applied to user edit page
+.controller('userEditController', ['$routeParams', 'User', function($routeParams, User) {
+
+  var vm = this;
+
+  vm.type = 'edit';
+
+  // get the user data for the user to edit
+  // $routeParams contains the information in the URL
+  User.get($routeParams.user_id)
+    .success(function(data) {
+      vm.userData = data;
+    });
+
+  // function to save the user
+  vm.saveUser = function() {
+    vm.processing = true;
+    vm.message = '';
+
+    // call the userServuce function to update
+    User.update($routeParams.user_id, vm.userData)
+      .success(function(data) {
+        vm.processing = false;
+
+        // clear the form out
+        vm.userData = {};
+
+        // bind the message from our API to the message
+        vm.message = data.message;
+      });
+  };
+
+
 }]);
